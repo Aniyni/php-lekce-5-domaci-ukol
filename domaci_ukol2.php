@@ -11,7 +11,7 @@ class uzivatel {
     $this->heslo = $heslo;
 }
 
-    public function overeni(){
+    public function overeni($jmeno, $heslo){
         return $jmeno === $this->jmeno && $heslo === $this->heslo;
         }
 
@@ -29,7 +29,19 @@ class prihlaseni {
         }
     }
 
-    public function zobrazPrihlaseneUzivatele{
+    public function zobrazPrihlaseneUzivatele(){
         echo 'Prihlaseni uzivatele:'. implode(',',$this->PrihlaseniUzivatele) . '<br>';
     }
 }
+$josef = new uzivatel('Josef', 'josef1234');
+$prihlasovani = new prihlaseni();
+
+$prihlasovani->zobrazPrihlaseneUzivatele();
+$prihlasovani->prihlas($josef,'Josef','josef1234');
+$prihlasovani->zobrazPrihlaseneUzivatele();
+$prihlasovani->prihlas($josef,'Josed','test');
+$prihlasovani->zobrazPrihlaseneUzivatele();
+$karel = new uzivatel('Karel','karel1234');
+$prihlasovani->prihlas($karel,'Karel','karel1234');
+$prihlasovani->zobrazPrihlaseneUzivatele();
+
